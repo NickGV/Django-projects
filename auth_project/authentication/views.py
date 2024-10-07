@@ -1,21 +1,23 @@
 from django.shortcuts import render, redirect
-from .forms import UserRegisterForm
+from .forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+def home(request):
+  return render(request, 'base.html')
+
 def register(request):
-  if request.methd == 'POST':
-    form = UserRegisterForm(request.POST)
-    if form.is_valid():
-      form.save()
-      username = form.cleaned_data.get('username')
-      messages.success(request, f'Account created for {username}!')
-      return redirect('login')
-    else:
-      form = UserRegisterForm()
-  return render(request, 'authentication/register.html', {'form': form})
+  if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your account has been created successfully!')
+            return redirect('home')  # Redirige al home después de registrarse
+  else:
+        form = UserCreationForm()
+  return render(request, 'register.html', {'form': form})
 
 def login_view(request):
   if request.method == 'POST':
@@ -27,7 +29,7 @@ def login_view(request):
       return redirect('profile')
     else:
       messages.info(request, 'Username or password is incorrect')
-  return render(request, 'authentication/login.html')
+  return render(request, 'login.html')
 
 def logout_view(request):
   logout(request)
@@ -35,4 +37,4 @@ def logout_view(request):
 
 @login_required
 def profile(request):
-  return render(request, 'authentication/profile.html')
+  return render(request, 'profile.html')

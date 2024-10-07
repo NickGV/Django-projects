@@ -1,0 +1,29 @@
+[33mcommit bb447dbfb8e6e61fac9915c1df4dffcd5e084468[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mauth-project[m[33m)[m
+Author: Nick <nickgomvelez@gmail.com>
+Date:   Mon Oct 7 10:49:25 2024 -0500
+
+    feat: urls config
+
+[33mcommit 1a0e5423247c385c7e56424c6eadb4358cc16ba6[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Nick <nickgomvelez@gmail.com>
+Date:   Fri Oct 4 20:41:21 2024 -0500
+
+    setup the project auth project
+
+[33mcommit 077fe6cc4cef3170da1989371c8b4071456b321b[m
+Author: Nick <nickgomvelez@gmail.com>
+Date:   Wed Oct 2 11:31:22 2024 -0500
+
+    style: Add styles to the diferent pages with boostrap
+
+[33mcommit 71ab757ac919fd0b080fc25f180fee21f921f0c5[m
+Author: Nick <nickgomvelez@gmail.com>
+Date:   Mon Sep 30 10:48:16 2024 -0500
+
+    finish blog MVP
+
+[33mcommit 874161d785f41322e2c65d8006874618892508e7[m
+Author: Nick <nickgomvelez@gmail.com>
+Date:   Fri Sep 27 22:48:15 2024 -0500
+
+    initial commit setup the project
