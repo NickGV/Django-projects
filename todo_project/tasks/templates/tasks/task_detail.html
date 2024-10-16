@@ -1,0 +1,14 @@
+<div>
+  {{ task.name }}
+  <br>
+  {{ task.description }}
+  <br>
+  {{ task.due_date }}
+  <br>
+  {{ task.completed }}
+  <br>
+
+  <button>Complete</button>
+  <a href="{% url 'tasks:task_edit' task.id %}">Edit</a>
+  <a href="{% url 'tasks:task_list' %}">Back to task list</a>
+</div>
