@@ -1,7 +1,27 @@
-<div>
-  <ul>
-    {% for task in tasks %}
-      <li>{{ task.name }}</li>
-    {% endfor %}
-  </ul>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+</head>
+<body>
+    <h1>Task List</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <strong>{{ task.title }}</strong> - {{ task.description }}
+                <em>Due: {{ task.due_date }}</em>
+                <em>Priority: {{ task.get_priority_display }}</em>
+                <form method="POST" action="{% url 'task_delete' task.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% empty %}
+            <li>No tasks available.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'task_create' %}">Create Task</a>
+</body>
+</html>
