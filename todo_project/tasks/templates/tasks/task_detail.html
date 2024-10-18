@@ -4,23 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Detail</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <h1>{{ task.title }}</h1>
-    <p><strong>Description:</strong> {{ task.description }}</p>
-    <p><strong>Due Date:</strong> {{ task.due_date }}</p>
-    <p><strong>Priority:</strong> {{ task.get_priority_display }}</p>
-    <p><strong>Completed:</strong> {{ task.completed }}</p>
-    <p><strong>Created At:</strong> {{ task.created_at }}</p>
-    <p><strong>Updated At:</strong> {{ task.updated_at }}</p>
+    <ul>
+        <li>
+            <p><strong>Description:</strong> {{ task.description }}</p>
+            <p><strong>Due Date:</strong> {{ task.due_date }}</p>
+            <p><strong>Priority:</strong> {{ task.get_priority_display }}</p>
+            <p><strong>Completed:</strong> {{ task.completed }}</p>
+            <p><strong>Created At:</strong> {{ task.created_at }}</p>
+            <p><strong>Updated At:</strong> {{ task.updated_at }}</p>
 
-    <a href="{% url 'task_update' task.id %}">Edit Task</a>
+            <div class="task-actions">
+                <a href="{% url 'task_update' task.id %}">Edit Task</a>
 
-    <form method="POST" action="{% url 'task_delete' task.id %}">
-        {% csrf_token %}
-        <button type="submit">Delete Task</button>
-    </form>
-
+                <form method="POST" action="{% url 'task_delete' task.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Delete Task</button>
+                </form>
+            </div>
+        </li>
+    </ul>
     <a href="{% url 'task_list' %}">Back to Task List</a>
 </body>
 </html>
