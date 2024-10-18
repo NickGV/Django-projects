@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task List</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
     <h1>Task List</h1>
     <ul>
-        {% for task in tasks %}
-            <li>
-                <strong>{{ task.title }}</strong> - {{ task.description }}
-                <br>
-                <em>Due: {{ task.due_date }}</em>
-                <em>Priority: {{ task.get_priority_display }}</em>
-                <div class="task-actions">
-                    <form method="POST" action="{% url 'task_delete' task.id %}">
-                        {% csrf_token %}
-                        <button type="submit">Delete</button>
-                    </form>
-                    <a href="{% url 'task_update' task.id %}">Update</a>
-                    <a href="{% url 'task_detail' task.id %}">Details</a>
-                </div>
-            </li>
-        {% empty %}
-            <li>No tasks available.</li>
-        {% endfor %}
+      {% for task in tasks %}
+      <li>
+        <div>
+          <p>{{ task.title }}</p>
+          <p>- {{ task.description }}</p>
+          <em>Due: {{ task.due_date }}</em>
+          <em>Priority: {{ task.get_priority_display }}</em>
+        </div>
+        <div class="task-actions">
+          <a href="{% url 'task_update' task.id %}">Update</a>
+          <a href="{% url 'task_detail' task.id %}">Details</a>
+          <form method="POST" action="{% url 'task_delete' task.id %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </li>
+      {% empty %}
+      <li>No tasks available.</li>
+      {% endfor %}
     </ul>
     <a href="{% url 'task_create' %}" class="create-task">Create Task</a>
-</body>
+  </body>
 </html>
